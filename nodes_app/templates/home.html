@@ -7,19 +7,25 @@
 </head>
 <body>
     <h1>Welcome to flask home</h1>
-    {% if role == "admin" %}
-        <button>Eliminar</button>
-    {% else %}
-        <button>Solicitar eliminacion</button>
-    {% endif %}
 
     <ul>
-    {% for note in notes %}
+        {% for note in notes %}
         <li>
-            {{ note }}
-        </li>
-    {% endfor %}
+            {{ note.title }}<br>
+            {{ note.content }}
+            <a href=" {{ url_for('edit_note', id=note.id)}}">
+                Editar
+            </a><br>
+            <form action="{{ url_for('delete_note', id=note.id)}}" method="post">
+                <button type="submit">Eliminar</button>
+            </form>
+        </li><br>
+        {% else %}
+        <li>No hay notas</li>
+        {% endfor %}
     </ul>
     
+    <a href="{{ url_for('create_note') }}">Crear una nueva nota</a>
+
 </body>
 </html>
