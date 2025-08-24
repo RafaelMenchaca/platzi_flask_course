@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nodes App</title>
+</head>
+<body>
+    <h1>Welcome to flask home</h1>
+    {% if role == "admin" %}
+        <button>Eliminar</button>
+    {% else %}
+        <button>Solicitar eliminacion</button>
+    {% endif %}
+
+    <ul>
+    {% for note in notes %}
+        <li>
+            {{ note }}
+        </li>
+    {% endfor %}
+    </ul>
+    
+</body>
+</html>
